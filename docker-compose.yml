@@ -1,0 +1,20 @@
+# PHP Web Server
+apache:
+  container_name: shaun-cayabyab-site
+  build: .
+  ports:
+    - "8000:80"
+  volumes:
+    - ./public:/var/www/html
+  links:
+    - mysql:mysql
+  restart: always
+
+# MySQL Server
+mysql:
+  container_name: timothy-morris-mysql
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: 'root'
+  volumes:
+- ./database:/docker-entrypoint-initdb.d

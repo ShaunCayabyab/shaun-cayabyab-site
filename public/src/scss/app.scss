@@ -1,0 +1,71 @@
+$hero-bg: url(../images/landing-photo.jpg);
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto');
+@import 'grid';
+
+@mixin full-contain{
+	min-width: 100%;
+	min-height: 100%;
+}
+
+@mixin force-full{
+	width: 100%;
+	min-height: 100vh;
+}
+
+@mixin above-overlay{
+	position: relative;
+	z-index: 99;
+}
+
+html,
+body,
+section,
+ul,
+ol{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	font-size: 110%;
+	font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4{
+	font-size: 1.2em;
+	color: #2a272e;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h2{
+	font-size: 2em;
+}
+
+h4{
+	margin: 0;
+}
+
+section{
+	position: relative;
+	width: 100%;
+}
+
+$gutter: 4%;
+$breakpoint-small: 600px; // 540px
+$breakpoint-med: 800px; // 720px
+$breakpoint-large: 60em; // 960px
+
+@media only screen and (min-width: $breakpoint-med) {
+	@import 'base/_full';
+}
+
+@media only screen and (min-width: ($breakpoint-small)) and (max-width: ($breakpoint-med - 1)){
+	@import 'base/_mid';
+}
+
+@media only screen and (max-width: ($breakpoint-small - 1)){
+	@import 'base/_small';
+}
+
