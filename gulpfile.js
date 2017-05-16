@@ -11,6 +11,7 @@ var
   autoprefixer = require('gulp-autoprefixer'),
   cssnano = require('gulp-cssnano'),
   mqpacker = require('css-mqpacker'),
+  smushit = require('gulp-smushit'),
   browserSync = require('browser-sync').create(),
 
   // development mode?
@@ -29,6 +30,15 @@ gulp.task('images', function(){
 	return gulp.src(folder.src + 'images/**/*')
 		.pipe(newer(out))
 		.pipe(imagemin({ optimizationLevel: 5 }))
+		.pipe(gulp.dest(out));
+});
+
+gulp.task('smushit', function(){
+	var out = folder.build + 'images/';
+	return gulp.src(folder.src + 'images/**/*')
+		.pipe(smushit({
+			verbose: true
+		}))
 		.pipe(gulp.dest(out));
 });
 
