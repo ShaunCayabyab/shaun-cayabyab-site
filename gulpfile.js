@@ -28,8 +28,10 @@ var
 gulp.task('images', function(){
 	var out = folder.build + 'images/';
 	return gulp.src(folder.src + 'images/**/*')
-		.pipe(newer(out))
-		.pipe(imagemin({ optimizationLevel: 5 }))
+		.pipe(imagemin({ optimizationLevel: 10 }))
+		.pipe(smushit({
+			verbose: true
+		}))
 		.pipe(gulp.dest(out));
 });
 
