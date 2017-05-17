@@ -24,6 +24,12 @@ var
   }
 ;
 
+//build variables for... building
+var ftp = require('vinyl-ftp');
+var gutil = require('gulp-util');
+var minimist = require('minimist');
+var args = minimist(process.argv.slice(2));
+
 //image processing
 gulp.task('images', function(){
 	var out = folder.build + 'images/';
@@ -108,4 +114,21 @@ gulp.task('watch', function(){
 	//sync browser
 	gulp.watch('public/*.html').on('change', browserSync.reload);
 
+});
+
+//build task
+gulp.task('build', ['images', 'html', 'css']);
+
+//deploy task
+gulp.task('deploy', function() {
+  var remotePath = '/public_html/';
+  var conn = ftp.create({
+    host: 'wecodetheweb.com',
+    user: args.user,
+    password: args.password,
+    log: gutil.log
+  });
+  gulp.src(['index.html', './**/*.css'])
+    .pipe(conn.newer(remotePath))
+    .pipe(conn.dest(remotePath));
 });

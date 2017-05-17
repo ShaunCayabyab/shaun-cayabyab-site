@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "node"
+  - "4"
+
+branches:
+  only:
+    - develop
+
+before_script:
+  - npm install -g gulp
+  - gulp build
+
+env:
+  global:
+    - secure: "Ydl5gOXBAlYFvdU4fSBlxfsJiO+gPpcdWx+7Q1DO9ZdvsZBObT3oD9uwn+/sx8icLCWRMMTw1kb0cZATz4sBQnnouf5g9pAsDMb7VZUMul5y8lT+9p875INbobE65leKehASiM1sLGnes5FcWGcqW7cYQKBv3UB9cE1VhY9kmg4OnCKFBUXRwSUR3CkM3uk3luOjsWqGmc6u8MPmiQ7yN1RRzJ6mSOz8vND4D3pAU5JXyZi84ur0ufA7/FrOM3MpSgIRgotozywLlcLxTlo9a3hI+G33jeKzRgqyLuHm2QCu3kGAzzhFsu3GU/lcVRuIjVwoY9R3AibUgqIY870goEhulOXX7QoRZDGxpbDaE3jshtwDtkvE4ohe7oj868R/0bjw4CjVOfxOpfvqeNTSy4RcuRxS//LV0TgmtqcJcfi89mHG9bWayE/QXAb/kSBwOFrfymh1rqd8qI70ueX43Gl7B7wJ474fCi5eb3eL2VqCm4N+x/BJTWQ6SP8JXRDE5JjI14ewVyOAGVepbPuFifM6XpXB5rBROvEkcupzmqyxo57PI03nJfcqRhF/Iz+PyNYg5Af/ogHGgD4tp09HEnXKPH4nkQQdAGLy+0+TLomX0ghZawNNxovJOJR/OcvZypnS9fDDYDiFrvKQ22Et8yxWN2pP+sMQf0OI86W2+0o="
+    - secure: "ZbvWb7pzNCX0LF38/NgmIwPw5botdqUO6NElO35mmGFuGHrti7ZdNlloMHZ8wyg7li7G3HgnSD+j1rllRsMdEiH0kz6x4ugDWBQ18+qdGjc5+wCLc18PUn7QJEoYWdnhVbvc3oBeqte2JKi1V2mrKtxpCZYYQcOlq6+jXc+Z+CpcTRCQmqNzyjVpfSvtq0yoo86ZRVR9YEkZtFovnA435YSZnnPDDpJG9/eymkZDVUxFKzc0eh7fjcZD7rkRSV3cwNvmd4hut5OsTbdhUkTh9RamiZyokvZOH5Sq6Fm9vyqEycKLfmS87i2JHY61cqk7JvUT9LWsTTRJfA6bwYHYJtr8TPCyurTmK+1NDOOQ/qlLzwJKclfQZ68eHcpE5i9P1dFPK9lgy7Dqz8GprWWPzAEpzpmcxP1o2EybBsqnKuefXyCwi9jWmEUjVPeMROLDAkvqorT2TbdM6eM+eSO1iXtRXpeEHS7vSlrAXuhJ5vCT1pYyO4Fud731nAUFYjw30bI5WI/4rd9IQ0n3ijejQPxLPrFBLI5XSmwnfW2Ywgz9rltL4a/xgFdGugpyzyjoIO9j253D4kNai4/Lb6KXEMPhsDL9THFM1qvHm//UOMKM0eCfZm3+B7sD8ArNHf9mzZLQJ7TCN5pVajk56E9oNSaptU21D7WSDgBiY5yTbwQ="
+after_success:
+  gulp deploy --user $FTP_USER --password $FTP_PASSWORD
