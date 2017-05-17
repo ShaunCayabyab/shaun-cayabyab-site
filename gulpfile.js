@@ -35,9 +35,9 @@ gulp.task('images', function(){
 	var out = folder.build + 'images/';
 	return gulp.src(folder.src + 'images/**/*')
 		.pipe(imagemin({ optimizationLevel: 10 }))
-		.pipe(smushit({
-			verbose: true
-		}))
+		//.pipe(smushit({
+		//	verbose: true
+		//}))
 		.pipe(gulp.dest(out));
 });
 
@@ -128,7 +128,7 @@ gulp.task('deploy', function() {
     password: args.password,
     log: gutil.log
   });
-  gulp.src(['./index.html', './build/**/*'])
+  gulp.src(['./public/index.html', './public/build/**/*'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
 });
