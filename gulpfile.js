@@ -122,13 +122,17 @@ gulp.task('build', ['html', 'css']);
 //deploy task
 gulp.task('deploy', function() {
   var remotePath = 'dev.shaun-cayabyab.com/';
+  var buildPath = 'dev.shaun-cayabyab.com/build/';
   var conn = ftp.create({
     host: 'ftp.shaun-cayabyab.com',
     user: args.user,
     password: args.password,
     log: gutil.log
   });
-  gulp.src(['./public/index.html', './public/build/'])
+  gulp.src(['./public/index.html'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
+  gulp.src(['./public/build/**/*'])
+  	.pipe(conn.newer(buildPath))
+  	.pipe(conn.dest(buildPath));
 });
