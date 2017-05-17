@@ -128,7 +128,7 @@ gulp.task('deploy', function() {
     password: args.password,
     log: gutil.log
   });
-  gulp.src(['./public/index.html', './public/build/**/*'])
+  gulp.src(['./public/index.html', './public/build/'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
 });
