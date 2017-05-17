@@ -121,14 +121,14 @@ gulp.task('build', ['images', 'html', 'css']);
 
 //deploy task
 gulp.task('deploy', function() {
-  var remotePath = '/public_html/';
+  var remotePath = 'dev.shaun-cayabyab.com/';
   var conn = ftp.create({
-    host: 'wecodetheweb.com',
+    host: 'ftp.shaun-cayabyab.com',
     user: args.user,
     password: args.password,
     log: gutil.log
   });
-  gulp.src(['index.html', './**/*.css'])
+  gulp.src(['./**/*'])
     .pipe(conn.newer(remotePath))
     .pipe(conn.dest(remotePath));
 });
