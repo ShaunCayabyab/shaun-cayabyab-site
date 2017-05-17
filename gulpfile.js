@@ -117,7 +117,7 @@ gulp.task('watch', function(){
 });
 
 //build task
-gulp.task('build', ['images', 'html', 'css']);
+gulp.task('build', ['html', 'css']);
 
 //deploy task
 gulp.task('deploy', function() {
