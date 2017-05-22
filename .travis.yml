@@ -8,6 +8,7 @@ branches:
 
 before_script:
   - npm install -g gulp
+  - mkdir public/src/images/for-smushit/
   - gulp build
 
 env:

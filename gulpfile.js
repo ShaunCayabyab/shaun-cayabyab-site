@@ -41,8 +41,15 @@ gulp.task('images', function(){
 		.pipe(gulp.dest(out));
 });
 
-gulp.task('smushit', function(){
+gulp.task('images-from-smushit', ['smushit'], function(){
 	var out = folder.build + 'images/';
+	return gulp.src(folder.src + 'images/for-smushit/**/*')
+		.pipe(imagemin({ optimizationLevel: 10 }))
+		.pipe(gulp.dest(out));
+});
+
+gulp.task('smushit', function(){
+	var out = folder.src + 'images/for-smushit/';
 	return gulp.src(folder.src + 'images/**/*')
 		.pipe(smushit({
 			verbose: true
@@ -117,7 +124,7 @@ gulp.task('watch', function(){
 });
 
 //build task
-gulp.task('build', ['html', 'css']);
+gulp.task('build', ['html', 'css', 'images-from-smushit']);
 
 //deploy task
 gulp.task('deploy', function() {
