@@ -1,71 +1,64 @@
-$hero-bg: url(../images/landing-photo.jpg);
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto');
 @import 'grid';
 
-@mixin full-contain{
-	min-width: 100%;
-	min-height: 100%;
-}
+@import 'abstracts/breakpoints';
+@import 'abstracts/mixins';
 
-@mixin force-full{
-	width: 100%;
-	min-height: 100vh;
-}
-
-@mixin above-overlay{
-	position: relative;
-	z-index: 99;
-}
+@import 'base/landing';
+@import 'base/palette';
+@import 'base/typography';
 
 html,
 body,
 section,
 ul,
 ol{
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-html{
-	font-size: 110%;
-	font-family: 'Roboto', sans-serif;
+.main-header {
+    @include full-width;
+    background-color: $deep-purple;
+    text-align: center;
+    padding: 1rem 0;
+
+    .brand-image {
+        @include breakpoint($breakpoint-small, 'width', (
+            min: (
+                width: 50%,
+                max-width: 700px
+            ),
+            max: (
+                max-width: 96%,
+            )
+        ));
+    }
 }
 
-h1, h2, h3, h4{
-	font-size: 1.2em;
-	color: #2a272e;
-	text-align: center;
-	font-family: 'Montserrat', sans-serif;
+.nav-header {
+    @include full-width;
+    height: 40px;
+    background-color: $purple;
 }
 
-h2{
-	font-size: 2em;
+#landing {
+    background-color: $grey;
+
+    .reel-container {
+        width: 100%;
+        max-width: 1000px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 70px 0;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
-
-h4{
-	margin: 0;
-}
-
-section{
-	position: relative;
-	width: 100%;
-}
-
-$gutter: 4%;
-$breakpoint-small: 600px; // 540px
-$breakpoint-med: 800px; // 720px
-$breakpoint-large: 60em; // 960px
-
-@media only screen and (min-width: $breakpoint-med) {
-	@import 'base/_full';
-}
-
-@media only screen and (min-width: ($breakpoint-small)) and (max-width: ($breakpoint-med - 1)){
-	@import 'base/_mid';
-}
-
-@media only screen and (max-width: ($breakpoint-small - 1)){
-	@import 'base/_small';
-}
-
