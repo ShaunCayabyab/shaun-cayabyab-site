@@ -1,0 +1,71 @@
+#about {
+    @include container-centered;
+
+    background-color: white;
+
+    @include breakpoint($breakpoint-small, 'width', (
+        min: (
+            padding-top: 30px
+        ),
+        max: (
+            padding-top: 0
+        )
+    ));
+
+    .highlight-purple {
+        font-weight: bolder;
+        color: $vibrant-purple;
+        font-size: 1.10rem;
+    }
+
+    .column-container{
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: stretch;
+
+        .about-left{
+
+        }
+
+        .about-right{
+            width: 40%;
+            padding-right: 10%;
+            float: right;
+
+            .row {
+                text-align: center;
+                margin-bottom: 50px;
+
+                .left, .right {
+                    width: 49%;
+                    display: inline-block;
+
+                    h4 {
+                        color: $vibrant-purple;
+                    }
+                }
+
+                .center {
+                    width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    h4 {
+                        color: $vibrant-purple;
+                    }
+                }
+            }
+        }
+    }
+
+    .column-container::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .clear{
+        clear: both;
+    }
+}

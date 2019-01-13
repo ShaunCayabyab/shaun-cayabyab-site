@@ -1,12 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Condensed');
 @import 'grid';
 
 @import 'abstracts/breakpoints';
 @import 'abstracts/mixins';
 
-@import 'base/landing';
 @import 'base/palette';
 @import 'base/typography';
+
+@import 'components/about';
+@import 'components/contact';
+
+@import 'base/landing';
 
 html,
 body,
