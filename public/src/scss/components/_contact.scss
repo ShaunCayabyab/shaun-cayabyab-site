@@ -7,23 +7,39 @@
         width: 100% !important;
 
         .about-left{
-            width: 50%;
-            float: left;
-            text-align: right;
-            overflow: hidden;
-            position: relative;
+            @include breakpoint($breakpoint-small, 'width', (
+                min: (
+                    width: 50%,
+                    float: left,
+                    text-align: right,
+                    overflow: hidden,
+                    position: relative
+                ),
+                max: (
+                    width: 90%,
+                    margin: 0 5%,
+                    text-align: center
+                )
+            ));
 
             .about-image{
                 float: right;
                 padding-right: 3%;
             }
 
-            @media only screen and (max-width: 1280px){
+            @media only screen and (max-width: $breakpoint-med) and (min-width: $breakpoint-small){
                 .about-image{
-                    width: 155%;
+                    width: 135%;
                     position: absolute;
                     bottom: 0;
                     right: 0;
+                }
+            }
+
+            @include respond-to($breakpoint-small, 'max-width') {
+                .about-image {
+                    max-width: 100%;
+                    margin-top: 20px;
                 }
             }
         }
@@ -33,6 +49,7 @@
                 min: (
                     width: 40%,
                     padding-right: 10%,
+                    margin-top: 30px,
                     float: right
                 ),
                 max: (
@@ -85,10 +102,11 @@
         display: inline-block;
         vertical-align: middle;
         margin: 0 10px 0 10px;
+        opacity: .6;
         transition: opacity 0.2s ease-out;
     }
 
     .icon:hover{
-        opacity: .6;
+        opacity: 1;
     }
 }
