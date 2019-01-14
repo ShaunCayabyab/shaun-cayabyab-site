@@ -8,7 +8,9 @@
 @import 'base/typography';
 
 @import 'components/about';
+@import 'components/sound-design';
 @import 'components/contact';
+@import 'components/titles';
 
 @import 'base/landing';
 
@@ -64,5 +66,18 @@ ol{
             width: 100%;
             height: 100%;
         }
+    }
+}
+
+footer{
+    width: 100%;
+    padding: 5px 0 5px 0;
+    background-color: $deep-purple;
+    text-align: center;
+    color: white;
+
+    p{
+        margin: 0;
+        font-size: 0.6em;
     }
 }

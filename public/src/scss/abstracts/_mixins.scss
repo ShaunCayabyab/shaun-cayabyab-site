@@ -76,3 +76,31 @@
 @mixin full-width {
     width: 100%;
 }
+
+@mixin flex-container($is_reversed) {
+    @if $is_reversed {
+        @include breakpoint($breakpoint-small, 'width', (
+            min: (
+                width: 100%,
+                display: flex,
+                flex-direction: row-reverse,
+                align-items: stretch
+            ),
+            max: (
+                width: 100%,
+            )
+        ));
+    } @else {
+        @include breakpoint($breakpoint-small, 'width', (
+            min: (
+                width: 100%,
+                display: flex,
+                flex-direction: row,
+                align-items: stretch
+            ),
+            max: (
+                width: 100%,
+            )
+        ));
+    }
+}

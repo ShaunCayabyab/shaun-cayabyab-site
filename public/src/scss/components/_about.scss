@@ -19,19 +19,44 @@
     }
 
     .column-container{
-        width: 100%;
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: stretch;
+        @include flex-container(false);
 
         .about-left{
+            @include breakpoint($breakpoint-small, 'width', (
+                min: (
+                    width: 40%,
+                    padding-left: 10%,
+                    float: left
+                ),
+                max: (
+                    width: 90%,
+                    margin: 0 5%,
+                    text-align: center
+                )
+            ));
 
+            .images-container {
+                width: 100%;
+                margin-top: 25px;
+
+                .main-portrait {
+                    width: 70%;
+                }
+            }
         }
 
         .about-right{
-            width: 40%;
-            padding-right: 10%;
-            float: right;
+            @include breakpoint($breakpoint-small, 'width', (
+                min: (
+                    width: 40%,
+                    padding-right: 10%,
+                    float: right
+                ),
+                max: (
+                    width: 90%,
+                    padding: 0 5%
+                )
+            ));
 
             .row {
                 text-align: center;

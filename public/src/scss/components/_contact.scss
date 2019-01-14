@@ -1,5 +1,94 @@
 #contact {
-	@include container-centered;
+    margin-top: 30px;
+    text-align: center;
 
-	text-align: center;
+    .column-container{
+        @include flex-container(true);
+        width: 100% !important;
+
+        .about-left{
+            width: 50%;
+            float: left;
+            text-align: right;
+            overflow: hidden;
+            position: relative;
+
+            .about-image{
+                float: right;
+                padding-right: 3%;
+            }
+
+            @media only screen and (max-width: 1280px){
+                .about-image{
+                    width: 155%;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+        }
+
+        .about-right{
+            @include breakpoint($breakpoint-small, 'width', (
+                min: (
+                    width: 40%,
+                    padding-right: 10%,
+                    float: right
+                ),
+                max: (
+                    width: 90%,
+                    padding: 0 5%
+                )
+            ));
+
+            .row {
+                text-align: center;
+                margin-bottom: 50px;
+
+                .left, .right {
+                    width: 49%;
+                    display: inline-block;
+
+                    h4 {
+                        color: $vibrant-purple;
+                    }
+                }
+
+                .center {
+                    width: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    h4 {
+                        color: $vibrant-purple;
+                    }
+                }
+            }
+        }
+    }
+
+    .column-container::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .clear{
+        clear: both;
+    }
+}
+
+.social-icons{
+    width: 100%;
+
+    .icon{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 10px 0 10px;
+        transition: opacity 0.2s ease-out;
+    }
+
+    .icon:hover{
+        opacity: .6;
+    }
 }

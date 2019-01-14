@@ -1,0 +1,21 @@
+.title-small {
+    @include breakpoint($breakpoint-small, 'width', (
+        min: (
+            display: none
+        ),
+        max: (
+            display: block
+        )
+    ));
+}
+
+.title-full {
+    @include breakpoint($breakpoint-small, 'width', (
+        min: (
+            display: block
+        ),
+        max: (
+            display: none
+        )
+    ));
+}
