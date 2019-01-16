@@ -7,10 +7,14 @@
 @import 'base/palette';
 @import 'base/typography';
 
-@import 'components/about';
-@import 'components/sound-design';
-@import 'components/contact';
+@import 'components/header';
 @import 'components/titles';
+@import 'components/content-menu';
+
+@import 'sections/about';
+@import 'sections/sound-design';
+@import 'sections/programming';
+@import 'sections/contact';
 
 @import 'base/landing';
 
@@ -30,15 +34,9 @@ ol{
     padding: 1rem 0;
 
     .brand-image {
-        @include breakpoint($breakpoint-small, 'width', (
-            min: (
-                width: 50%,
-                max-width: 700px
-            ),
-            max: (
-                max-width: 96%,
-            )
-        ));
+        width: 96%;
+        max-width: 550px;
+        padding: 10px 0;
     }
 }
 

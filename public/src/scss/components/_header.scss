@@ -1,0 +1,33 @@
+.nav-header {
+    width: 100%;
+    text-align: center;
+
+    .nav-container {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 35px;
+
+        @include breakpoint($breakpoint-small, 'width', (
+            min: (
+                display: block
+            ),
+            max: (
+                display: none
+            )
+        ));
+
+        .nav-item {
+            height: 100%;
+            display: inline-block;
+            font-size: 1.3rem;
+            font-weight: bolder;
+            color: white;
+            margin: 0 30px;
+
+            b {
+                vertical-align: middle;
+            }
+        }
+    }
+}

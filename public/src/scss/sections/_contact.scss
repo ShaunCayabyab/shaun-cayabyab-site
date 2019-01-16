@@ -29,7 +29,8 @@
 
             @media only screen and (max-width: $breakpoint-med) and (min-width: $breakpoint-small){
                 .about-image{
-                    width: 135%;
+                    width: 175%;
+                    max-width: 789px;
                     position: absolute;
                     bottom: 0;
                     right: 0;
@@ -47,8 +48,8 @@
         .about-right{
             @include breakpoint($breakpoint-small, 'width', (
                 min: (
-                    width: 40%,
-                    padding-right: 10%,
+                    width: 35%,
+                    padding-right: 15%,
                     margin-top: 30px,
                     float: right
                 ),
