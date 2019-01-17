@@ -1,28 +1,70 @@
 .content-menu-container {
     width: 100%;
     box-sizing: border-box;
+    margin-top: 50px;
 
     /* Style the tab */
     .tab {
       float: left;
-      border-right: 1px solid $deep-purple;
       width: 15%;
-      height: 250px;
+      padding-top: 1px;
+      border-right: 1px solid $deep-purple;
+      height: 550px;
     }
 
     /* Style the buttons that are used to open the tab content */
-    .tab button {
-        font-size: 1.1rem;
-        font-family: 'Roboto Condensed', sans-serif;
-        display: block;
-        background-color: inherit;
-        color: black;
-        padding: 10px 16px;
-        width: 100%;
+    .tab {
+        button {
+            font-size: 1.1rem;
+            font-family: 'Roboto Condensed', sans-serif;
+            display: block;
+            background-color: inherit;
+            color: black;
+            padding: 10px 16px;
+            width: 100%;
+            border: none;
+            outline: none;
+            text-align: right;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: $vibrant-purple-rgba;
+        }
+
+        button.active {
+            background-color: $vibrant-purple;
+        }
+    }
+
+    /* Style the tab content */
+    .tab-content {
+        float: left;
+        padding: 0px 16px;
         border: none;
-        outline: none;
-        text-align: right;
-        cursor: pointer;
-        transition: 0.3s;
+        display: none;
+        width: 75%;
+        height: 700px;
+        max-height: 550px;
+
+        .vimeo-container {
+            width: 60%;
+            max-width: 1000px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px 0;
+        }
+
+        h3, h4 {
+            color: white;
+            text-align: center;
+        }
+
+        .tab-description {
+            margin-top: 15px;
+            color: white;
+        }
     }
 }

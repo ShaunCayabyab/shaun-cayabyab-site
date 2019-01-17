@@ -130,10 +130,38 @@
 
                 <div class="content-menu-container">
                     <div class="tab">
-                      <button class="tab-links">Implementation</button>
-                      <button class="tab-links">Game Redesigns</button>
-                      <button class="tab-links">Anime Redesigns</button>
-                      <button class="tab-links">#Noisevember</button>
+                      <button class="tab-links" onclick="openTab(event, 'implementation')">Implementation</button>
+                      <button class="tab-links" onclick="openTab(event, 'game_redesign')">Game Redesigns</button>
+                      <button class="tab-links" onclick="openTab(event, 'anime_redesign')">Anime Redesigns</button>
+                      <button class="tab-links" onclick="openTab(event, 'noisevember')">#Noisevember</button>
+                      <button class="tab-links" onclick="openTab(event, 'bits_and_pieces')">Bits &amp; Pieces</button>
+                    </div>
+
+                    <div id="implementation" class="tab-content">
+                        <h3>IMPLEMENTATION</h3>
+                    </div>
+
+                    <div id="game_redesign" class="tab-content">
+                        <h3>GAME SOUND REDESIGNS</h3>
+                    </div>
+
+                    <div id="anime_redesign" class="tab-content">
+                        <h3>ANIME SOUND REDESIGNS</h3>
+                    </div>
+
+                    <div id="noisevember" class="tab-content">
+                        <h3>#NOISEVEMBER</h3>
+                        <div class="tab-description">
+                            Every November, there is the hashtag trend #noisevember that brings in a bunch of sound design and game audio people. For the entire month, people share snippets of anything sound related, whether it's a random sound they've designed or something a part of a project they're working on. I wanted to take part and try to come up with as many cool sounds as I could with some random objects around my room.
+                        </div>
+
+                        <div class="vimeo-container">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/311585537?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                    </div>
+
+                    <div id="bits_and_pieces" class="tab-content">
+                        <h3>BITS &amp; PIECES</h3>
                     </div>
                 </div>
             </div>
@@ -188,4 +216,26 @@
             <p>Handmade with love by Shaun Cayabyab</p>
         </footer>
     </body>
+    <script>
+        function openTab(evt, cityName) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tab-content");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tab-links");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the link that opened the tab
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        } 
+    </script>
 </html>
