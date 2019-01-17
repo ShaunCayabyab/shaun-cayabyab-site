@@ -1,6 +1,6 @@
 $hero-bg: url(../images/landing-photo.jpg);
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Condensed');
 @import 'grid';
 
 @mixin full-contain{
@@ -28,13 +28,14 @@ ol{
 }
 
 html{
-	font-size: 110%;
-	font-family: 'Roboto', sans-serif;
+	font-size: 1.1rem;
+	font-family: 'Roboto Condensed', sans-serif;
+    color: #696969;
 }
 
 h1, h2, h3, h4{
 	font-size: 1.2em;
-	color: #2a272e;
+	color: #696969;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
 }
@@ -50,6 +51,11 @@ h4{
 section{
 	position: relative;
 	width: 100%;
+}
+
+.highlight-purple {
+    font-weight: bolder;
+    color : #656898;
 }
 
 $gutter: 4%;
