@@ -39,6 +39,10 @@
                 </span>
 
                 <span class="nav-item">
+                    <b>MUSIC</b>
+                </span>
+
+                <span class="nav-item">
                     <b>CONTACT</b>
                 </span>
             </nav>
@@ -125,43 +129,51 @@
         <section id="sound-design">
             <div class="section-container">
                 <div class="section-header">
-                    <h2>WHAT SOUND DESIGN HAVE I DONE?</h2>
+                    <h2>WHAT SOUND DESIGN WORK HAVE I DONE?</h2>
                 </div>
 
-                <div class="content-menu-container">
-                    <div class="tab">
-                      <button class="tab-links" onclick="openTab(event, 'implementation')">Implementation</button>
-                      <button class="tab-links" onclick="openTab(event, 'game_redesign')">Game Redesigns</button>
-                      <button class="tab-links" onclick="openTab(event, 'anime_redesign')">Anime Redesigns</button>
-                      <button class="tab-links" onclick="openTab(event, 'noisevember')">#Noisevember</button>
-                      <button class="tab-links" onclick="openTab(event, 'bits_and_pieces')">Bits &amp; Pieces</button>
-                    </div>
-
-                    <div id="implementation" class="tab-content">
-                        <h3>IMPLEMENTATION</h3>
-                    </div>
-
-                    <div id="game_redesign" class="tab-content">
-                        <h3>GAME SOUND REDESIGNS</h3>
-                    </div>
-
-                    <div id="anime_redesign" class="tab-content">
-                        <h3>ANIME SOUND REDESIGNS</h3>
-                    </div>
-
-                    <div id="noisevember" class="tab-content">
-                        <h3>#NOISEVEMBER</h3>
-                        <div class="tab-description">
-                            Every November, there is the hashtag trend #noisevember that brings in a bunch of sound design and game audio people. For the entire month, people share snippets of anything sound related, whether it's a random sound they've designed or something a part of a project they're working on. I wanted to take part and try to come up with as many cool sounds as I could with some random objects around my room.
+                <div class="works-list-container">
+                    <div class="work-item reverse">
+                        <div class="work-left">
+                            <h2>3D GAME KIT</h2>
+                            <p class="subtitle">
+                                <i>
+                                    (Unity &amp; FMOD)
+                                    <br>
+                                    Sound Redesign &amp; Implementation
+                                </i>
+                            </p>
+                            <p class="description">
+                                The 3D Game Kit is a free project for the Unity game engine - it features many pre-made models, animations, prefabs, and scripts, all to help a user make a game with minimal coding required. Taking great interest in the project and in technical audio implementation, I wanted to replace the project's sounds with my own and implement them using FMOD.
+                            </p>
                         </div>
+                        <div class="work-right">
+                        </div>
+                    </div>
 
-                        <div class="vimeo-container">
+                    <div class="work-item">
+                        <div class="work-left">
                             <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/311585537?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                         </div>
+                        <div class="work-right">
+                            <h2>#NOISEVEMBER</h2>
+
+                            <p class="description">
+                                Every November, there is the hashtag trend &#8212; #noisevember &#8212; that brings in a bunch of sound design and game audio people. Each day for the entire month, people share snippets of anything sound related, whether it's a random sound they've designed or something a part of a project they're working on. I wanted to take part and try to come up with as many cool sounds as I could with some random objects around my room.
+                            </p>
+                        </div>
                     </div>
 
-                    <div id="bits_and_pieces" class="tab-content">
-                        <h3>BITS &amp; PIECES</h3>
+                    <div class="work-item reverse last">
+                        <div class="work-left">
+                            <h2>ANIME SOUND REDESIGNS</h2>
+
+                            <p class="description">
+                                Much like my love for games and game audio, I also have a love for anime and its sound design. Anime has a way of coloring visuals with sound that's rather unique, and I'm interested in learning this style of sound. Here's a playlist of the sound redesigns I have done for scenes of some of my favorite anime.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -171,6 +183,106 @@
             <div class="section-container">
                 <div class="section-header">
                     <h2>WHAT PROGRAMMING HAVE I DONE?</h2>
+                </div>
+
+                <div class="works-list-container">
+                    <div class="work-item reverse">
+                        <div class="work-left">
+                            <h2>BIRDS OF PARADISE</h2>
+                            <p class="subtitle">
+                                <i>Twitter Data Visualization Application</i>
+                            </p>
+                            <p class="description">
+                                This was a simple project for me to get to know Node.js, D3.js, and websockets. This web application makes use of Twitter's streaming API to grab a live feed of Tweets that contain the word 'bird'. From there, the tweet is displayed on the page and plays a random bird call.
+                                <br><br>
+                                Listen to a rather pretty soundscape of birds and a gentle river generated by bird Tweets!
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <div class="image-container">
+                                <img src="build/images/for-smushit/works-icons/birds-of-paradise-regular.png" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-item last">
+                        <div class="work-left">
+                            <div class="image-container">
+                                <img src="build/images/for-smushit/works-icons/likearchive-regular.png" />
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <h2>LIKE ARCHIVE</h2>
+                            <p class="subtitle">
+                                <i>An Archival View of a Tumblr User's Liked Posts</i>
+                            </p>
+
+                            <p class="description">
+                                This is a single page application that uses the Tumblr API and PHP client to create an archival view of a Tumblr user's liked posts. Properly viewing your liked posts or another user's publicly shared liked posts has always been a problem of mine during my times of using Tumblr, and I wanted to remedy that with this application.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="music">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>WHAT MUSIC WORK HAVE I DONE?</h2>
+                    <p>Though my current main line of work is with audio and programming, I also have professional experience as a Percussionist and Composer.</p>
+                </div>
+
+                <div class="works-list-container">
+                    <div class="work-item reverse">
+                        <div class="work-left">
+                            <h2>ISA</h2>
+                            <p class="subtitle">
+                                <i>Percussion Arrangements of Video Game Music</i>
+                            </p>
+                            <p class="description">
+                                ISA was a small project of mine where I wanted to take some of my favorite tracks from my favorite video games, arrange them for percussion, and record myself playing each part. It was a great experience that helped me learn percussion mic-ing techniques, audio recording, and video editing.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/lildNeEC8Vk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
+                    <div class="work-item">
+                        <div class="work-left">
+                            <div class="image-container">
+                                <img class="full" src="build/images/for-smushit/works-icons/waking-the-monster.jpg" />
+                                <iframe width="90%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/232549366&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <h2>GOLIATH INDUSTRIAL</h2>
+                            <p class="subtitle">
+                                <i>Piece Written for ILLUMINUS 2015</i>
+                            </p>
+
+                            <p class="description">
+                                On October 10th, I had the opportunity to be a part of the Waking the Monster team for Boston's ILLUMINUS, a nighttime public arts festival down Landsdowne Street. The festival featured many public art works by Boston's artists and performers. I, and three other composers, wrote music for nine percussionists to drum on the beams and pipes of the Green Monster. The team aimed to bring the green giant to life through programmatic music, lighting, and staging throughout the structure. Roughly thousands of spectators packed Landsdowne Street, and clustered together around the Green Monster to watch our performance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="work-item reverse last">
+                        <div class="work-left">
+                            <h2>NATHAN HAERING - RESPLENDANT SHARDS</h2>
+                            <p class="subtitle">
+                                <i>Piece for Vibraphone and Electronics</i>
+                            </p>
+                            <p class="description">
+                                <i>Resplendant Shards</i> was a piece written for me by Nathan Haering for the 2015 SPLICE Summer Electroacoustic Institute. I have also had the opportunity to perform the piece for the 2016 SEAMUS Conference in Statesboro, GA, and for the 2016 NYC Electroacoustic Music Festival in NYC.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/240734223&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -182,16 +294,13 @@
                         <div class="section-header">
                             <h2>HOW CAN I BE CONTACTED?</h2>
                         </div>
-                        <p>I can be found through these social media sites:</p>
+                        <p>I can be found through these sites:</p>
                         <div class="social-icons">
                             <div class="icon">
                                 <a href="https://github.com/ShaunCayabyab" target="_blank"><img src="build/images/icons/github-logo.jpg" alt="GitHub" /></a>
                             </div>
                             <div class="icon">
                                 <a href="https://www.linkedin.com/in/shaun-cayabyab-a757a780" target="_blank"><img src="build/images/icons/linkedin-logo-1.jpg" alt="LinkedIn" /></a>
-                            </div>
-                            <div class="icon">
-                                <a href="" target="_blank"><img src="" alt="Instagram" /></a>
                             </div>
                             <div class="icon">
                                 <a href="https://twitter.com/shauncayabyab" target="_blank"><img src="build/images/icons/twitter-logo.jpg" alt="Twitter" /></a>

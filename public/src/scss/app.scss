@@ -10,10 +10,12 @@
 @import 'components/header';
 @import 'components/titles';
 @import 'components/content-menu';
+@import 'components/works-list';
 
 @import 'sections/about';
 @import 'sections/sound-design';
 @import 'sections/programming';
+@import 'sections/music';
 @import 'sections/contact';
 
 @import 'base/landing';
@@ -38,12 +40,6 @@ ol{
         max-width: 550px;
         padding: 10px 0;
     }
-}
-
-.nav-header {
-    @include full-width;
-    height: 40px;
-    background-color: $purple;
 }
 
 #landing {

@@ -1,5 +1,5 @@
-#programming {
-	background-color: $deep-purple;
+#music {
+    background-color: $purple;
 
     .section-container {
         @include container-centered;
@@ -9,13 +9,9 @@
             padding-top: 30px;
             text-align: center;
 
-            h2 {
+            h2, h4, p {
                 color: white;
             }
-        }
-
-        .work-item {
-            border-bottom: 1px solid $purple;
         }
     }
 }
