@@ -113,11 +113,11 @@
 }
 
 .resume-link, .resume-link:active, .resume-link:visited, .resume-link:focus{
-        color: black;
-        opacity: .6;
-        transition: opacity 0.2s ease-out;
-    }
+    color: black;
+    opacity: .6;
+    transition: opacity 0.2s ease-out;
+}
 
-    .resume-link:hover{
-        opacity: 1;
+.resume-link:hover{
+    opacity: 1;
 }

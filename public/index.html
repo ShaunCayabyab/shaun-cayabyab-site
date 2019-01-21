@@ -18,6 +18,57 @@
           ga('send', 'pageview');
 
         </script>
+
+        <script>
+            $(document).ready(function (){
+                const sections = {
+                    'landing'      : [0, $('#about').offset().top],
+                    'about'        : [$('#about').offset().top, $('#sound-design').offset().top],
+                    'sound-design' : [$('#sound-design').offset().top, $('#programming').offset().top],
+                    'programming'  : [$('#programming').offset().top, $('#music').offset().top],
+                    'music'        : [$('#music').offset().top, $('#contact').offset().top],
+                    'contact'      : [$('#contact').offset().top, $('#contact').offset().top + $('#contact').outerHeight(true)],
+                };
+
+                const section_colors = {
+                    'sound-design' : true,
+                    'music'        : true,
+                    'contact'      : true,
+                }
+
+                $(".nav-item").click(function (){
+                    const section_id = $(this).data('section');
+
+                    $('html, body').animate({
+                        scrollTop: $(`#${section_id}`).offset().top - $('.nav-header').height() + 1
+                    }, 700);
+                });
+
+                $(window).scroll(() => {
+                    const scroll_position = $(window).scrollTop();
+                    const header_offset   = $('.nav-header').height() + 15;
+
+                    if (scroll_position >= $('.nav-header').offset().top) {
+                        $('.nav-header').addClass('lighter');
+                    } else if (scroll_position <= $('.nav-header').offset().top) {
+                        $('.nav-header').removeClass('lighter');
+                    }
+
+                    for (let section in sections) {
+                        if (scroll_position >= sections[section][0] - header_offset && scroll_position <= sections[section][1] - header_offset) {
+                            if (section == 'landing') {
+                                $('.nav-item').removeClass('active');
+                            } else if (!$(`.nav-item.${section}`).hasClass('active')) {
+                                $('.nav-item').removeClass('active');
+                                $(`.nav-item.${section}`).addClass('active');
+                            }
+
+                            break;
+                        }
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <div id="header" class="main-header">
@@ -26,23 +77,23 @@
 
         <div class="nav-header">
             <nav class="nav-container">
-                <span class="nav-item">
+                <span class="nav-item about" data-section="about">
                     <b>ABOUT</b>
                 </span>
 
-                <span class="nav-item">
+                <span class="nav-item sound-design" data-section="sound-design">
                     <b>SOUND DESIGN</b>
                 </span>
 
-                <span class="nav-item">
+                <span class="nav-item programming" data-section="programming">
                     <b>PROGRAMMING</b>
                 </span>
 
-                <span class="nav-item">
+                <span class="nav-item music" data-section="music">
                     <b>MUSIC</b>
                 </span>
 
-                <span class="nav-item">
+                <span class="nav-item contact" data-section="contact">
                     <b>CONTACT</b>
                 </span>
             </nav>
@@ -148,6 +199,7 @@
                             </p>
                         </div>
                         <div class="work-right">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/312615050?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                         </div>
                     </div>
 
@@ -166,13 +218,16 @@
 
                     <div class="work-item reverse last">
                         <div class="work-left">
-                            <h2>ANIME SOUND REDESIGNS</h2>
+                            <h2>BITS &amp; PIECES</h2>
 
                             <p class="description">
-                                Much like my love for games and game audio, I also have a love for anime and its sound design. Anime has a way of coloring visuals with sound that's rather unique, and I'm interested in learning this style of sound. Here's a playlist of the sound redesigns I have done for scenes of some of my favorite anime.
+                                I like to keep my Twitter account pretty active. Every now and then I post #gameaudio and #sounddesign related snippets of work to share with others.
                             </p>
                         </div>
                         <div class="work-right">
+                            <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Been doing a lot of <a href="https://twitter.com/hashtag/gameaudio?src=hash&amp;ref_src=twsrc%5Etfw">#gameaudio</a> Unity/FMOD learnin&#39; the past few weeks - both awesome to work with! Wanted to experiment in ways to get more gradual control over my mixer snapshots. <a href="https://t.co/SCpSqwlohp">pic.twitter.com/SCpSqwlohp</a></p>&mdash; Shaun Cayabyab 🔜 GGJ19 (@shauncayabyab) <a href="https://twitter.com/shauncayabyab/status/1082791063176261632?ref_src=twsrc%5Etfw">January 9, 2019</a></blockquote>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
                         </div>
                     </div>
                 </div>
@@ -183,36 +238,37 @@
             <div class="section-container">
                 <div class="section-header">
                     <h2>WHAT PROGRAMMING HAVE I DONE?</h2>
+                    <p>Much of my programming experience has been towards web design and development, but I've also been expanding it towards audio programming. Outside of game audio, my programming interests also branch out to UI/UX development and web audio.</p>
                 </div>
 
                 <div class="works-list-container">
                     <div class="work-item reverse">
                         <div class="work-left">
-                            <h2>BIRDS OF PARADISE</h2>
+                            <h2><a class="title-link" href="https://github.com/ShaunCayabyab/birds-of-paradise" target="_blank">BIRDS OF PARADISE</a></h2>
                             <p class="subtitle">
                                 <i>Twitter Data Visualization Application</i>
                             </p>
                             <p class="description">
-                                This was a simple project for me to get to know Node.js, D3.js, and websockets. This web application makes use of Twitter's streaming API to grab a live feed of Tweets that contain the word 'bird'. From there, the tweet is displayed on the page and plays a random bird call.
+                                This was a simple project for me to get to know Node.js, D3.js, and websockets. This web application makes use of Twitter's streaming API to grab a live feed of Tweets that contain the word "bird". From there, the tweet is displayed on the page and plays a random bird call.
                                 <br><br>
                                 Listen to a rather pretty soundscape of birds and a gentle river generated by bird Tweets!
                             </p>
                         </div>
                         <div class="work-right">
                             <div class="image-container">
-                                <img src="build/images/for-smushit/works-icons/birds-of-paradise-regular.png" />
+                                <a href="https://github.com/ShaunCayabyab/birds-of-paradise" target="_blank"><img src="build/images/for-smushit/works-icons/birds-of-paradise-regular.png" /></a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="work-item last">
+                    <div class="work-item tiled">
                         <div class="work-left">
                             <div class="image-container">
-                                <img src="build/images/for-smushit/works-icons/likearchive-regular.png" />
+                                <a href="https://github.com/ShaunCayabyab/LikeArchive" target="_blank"><img src="build/images/for-smushit/works-icons/likearchive-regular.png" /></a>
                             </div>
                         </div>
                         <div class="work-right">
-                            <h2>LIKE ARCHIVE</h2>
+                            <h2><a class="title-link" href="https://github.com/ShaunCayabyab/LikeArchive" target="_blank">LIKE ARCHIVE</a></h2>
                             <p class="subtitle">
                                 <i>An Archival View of a Tumblr User's Liked Posts</i>
                             </p>
@@ -230,7 +286,7 @@
             <div class="section-container">
                 <div class="section-header">
                     <h2>WHAT MUSIC WORK HAVE I DONE?</h2>
-                    <p>Though my current main line of work is with audio and programming, I also have professional experience as a Percussionist and Composer.</p>
+                    <p>Though my current main line of work is with audio and programming, I also have experience as a Percussionist and Composer.</p>
                 </div>
 
                 <div class="works-list-container">
@@ -245,18 +301,31 @@
                             </p>
                         </div>
                         <div class="work-right">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/lildNeEC8Vk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="video-responsive">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/lildNeEC8Vk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
 
                     <div class="work-item">
                         <div class="work-left">
-                            <div class="image-container">
-                                <img class="full" src="build/images/for-smushit/works-icons/waking-the-monster.jpg" />
-                                <iframe width="90%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/232549366&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                            <div class="video-responsive">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Du5IPDvrLGc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                         <div class="work-right">
+                            <h2>EKUDRUMS</h2>
+                            <p class="subtitle">
+                                <i>Drum Covers of Anime Music</i>
+                            </p>
+                            <p class="description">
+                                Like with my enjoyment of redesigning game audio, I also enjoy covering anime music. Here's another project with a silly name, involving me playing drum covers of some of my favorite songs that I've heard while watching anime.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="work-item reverse last">
+                        <div class="work-left">
                             <h2>GOLIATH INDUSTRIAL</h2>
                             <p class="subtitle">
                                 <i>Piece Written for ILLUMINUS 2015</i>
@@ -266,23 +335,13 @@
                                 On October 10th, I had the opportunity to be a part of the Waking the Monster team for Boston's ILLUMINUS, a nighttime public arts festival down Landsdowne Street. The festival featured many public art works by Boston's artists and performers. I, and three other composers, wrote music for nine percussionists to drum on the beams and pipes of the Green Monster. The team aimed to bring the green giant to life through programmatic music, lighting, and staging throughout the structure. Roughly thousands of spectators packed Landsdowne Street, and clustered together around the Green Monster to watch our performance.
                             </p>
                         </div>
-                    </div>
-
-                    <div class="work-item reverse last">
-                        <div class="work-left">
-                            <h2>NATHAN HAERING - RESPLENDANT SHARDS</h2>
-                            <p class="subtitle">
-                                <i>Piece for Vibraphone and Electronics</i>
-                            </p>
-                            <p class="description">
-                                <i>Resplendant Shards</i> was a piece written for me by Nathan Haering for the 2015 SPLICE Summer Electroacoustic Institute. I have also had the opportunity to perform the piece for the 2016 SEAMUS Conference in Statesboro, GA, and for the 2016 NYC Electroacoustic Music Festival in NYC.
-                            </p>
-                        </div>
                         <div class="work-right">
-                            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/240734223&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                            <div class="image-container">
+                                <img class="full" src="build/images/for-smushit/works-icons/waking-the-monster.jpg" />
+                                <iframe width="90%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/232549366&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </section>
@@ -305,12 +364,15 @@
                             <div class="icon">
                                 <a href="https://twitter.com/shauncayabyab" target="_blank"><img src="build/images/icons/twitter-logo.jpg" alt="Twitter" /></a>
                             </div>
+                            <div class="icon">
+                                <a href="https://vimeo.com/user93763173" target="_blank"><img src="build/images/icons/vimeo-logo.png" alt="Vimeo" /></a>
+                            </div>
                         </div>
                         <p>Or send an email to:</p>
                         <h3>contact@shaun-cayabyab.com</h3>
                         <br><br>
                         <p>Looking forward to working with you!</p>
-                        <h2>- <a class="resume-link" href="ShaunCayabyab-Resume.pdf" target="_blank">RESUME</a> -</h2>
+                        <h2>- <a class="resume-link" href="ShaunCayabyab-Resume.pdf" target="_blank">PROGRAMMING RESUME</a> -</h2>
                     </div>
 
                     <div class="about-left">

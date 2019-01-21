@@ -4,6 +4,7 @@
     height: 40px;
     width: 100%;
     text-align: center;
+    border-bottom: 5px solid #2d2d2d;
 
     @include breakpoint($breakpoint-small, 'width', (
             min: (
@@ -38,10 +39,35 @@
             font-weight: bolder;
             color: white;
             margin: 0 30px;
+            cursor: pointer;
 
             b {
                 vertical-align: middle;
             }
+
+            -webkit-transition: color 0.2s ease;
+            -moz-transition: color 0.2s ease;
+            -o-transition: color 0.2s ease;
+            transition: color 0.2s ease;
         }
+
+        .nav-item.active {
+            text-decoration: underline;
+            color: #2d2d2d !important;
+        }
+    }
+
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
+    -o-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+}
+
+.nav-header.lighter {
+    background-color: $faded-purple;
+    color: #2d2d2d;
+
+    .nav-container > .nav-item {
+        color: #929292;
     }
 }
