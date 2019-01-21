@@ -1,0 +1,17 @@
+#music {
+    background-color: $purple;
+
+    .section-container {
+        @include container-centered;
+
+        .section-header {
+            width: 100%;
+            padding-top: 30px;
+            text-align: center;
+
+            h2, h4, p {
+                color: white;
+            }
+        }
+    }
+}

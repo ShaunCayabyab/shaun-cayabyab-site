@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Shaun Cayabyab | Sound Designer, Programmer</title>
-        <meta name="description" content="Sound Designer, Programmer">
+        <title>Shaun Cayabyab - Sound Designer | Programmer</title>
+        <meta name="description" content="Sound designer and Programmer based out of Boston, MA.">
         <link rel="stylesheet" href="build/css/app.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
         <script>
@@ -18,305 +18,395 @@
           ga('send', 'pageview');
 
         </script>
+
         <script>
             $(document).ready(function (){
-                $("#scroll").click(function (){
+                const sections = {
+                    'landing'      : [0, $('#about').offset().top],
+                    'about'        : [$('#about').offset().top, $('#sound-design').offset().top],
+                    'sound-design' : [$('#sound-design').offset().top, $('#programming').offset().top],
+                    'programming'  : [$('#programming').offset().top, $('#music').offset().top],
+                    'music'        : [$('#music').offset().top, $('#contact').offset().top],
+                    'contact'      : [$('#contact').offset().top, $('#contact').offset().top + $('#contact').outerHeight(true)],
+                };
+
+                const section_colors = {
+                    'sound-design' : true,
+                    'music'        : true,
+                    'contact'      : true,
+                }
+
+                $(".nav-item").click(function (){
+                    const section_id = $(this).data('section');
+
                     $('html, body').animate({
-                        scrollTop: $("#about").offset().top
-                    }, 1000);
+                        scrollTop: $(`#${section_id}`).offset().top - $('.nav-header').height() + 1
+                    }, 700);
+                });
+
+                $(window).scroll(() => {
+                    const scroll_position = $(window).scrollTop();
+                    const header_offset   = $('.nav-header').height() + 15;
+
+                    if (scroll_position >= $('.nav-header').offset().top) {
+                        $('.nav-header').addClass('lighter');
+                    } else if (scroll_position <= $('.nav-header').offset().top) {
+                        $('.nav-header').removeClass('lighter');
+                    }
+
+                    for (let section in sections) {
+                        if (scroll_position >= sections[section][0] - header_offset && scroll_position <= sections[section][1] - header_offset) {
+                            if (section == 'landing') {
+                                $('.nav-item').removeClass('active');
+                            } else if (!$(`.nav-item.${section}`).hasClass('active')) {
+                                $('.nav-item').removeClass('active');
+                                $(`.nav-item.${section}`).addClass('active');
+                            }
+
+                            break;
+                        }
+                    }
                 });
             });
         </script>
     </head>
     <body>
+        <div id="header" class="main-header">
+            <img class="brand-image" src="build/images/branding-title.png" title="Shaun Cayabyab - Sound Designer and Programmer" />
+        </div>
+
+        <div class="nav-header">
+            <nav class="nav-container">
+                <span class="nav-item about" data-section="about">
+                    <b>ABOUT</b>
+                </span>
+
+                <span class="nav-item sound-design" data-section="sound-design">
+                    <b>SOUND DESIGN</b>
+                </span>
+
+                <span class="nav-item programming" data-section="programming">
+                    <b>PROGRAMMING</b>
+                </span>
+
+                <span class="nav-item music" data-section="music">
+                    <b>MUSIC</b>
+                </span>
+
+                <span class="nav-item contact" data-section="contact">
+                    <b>CONTACT</b>
+                </span>
+            </nav>
+        </div>
+
         <section id="landing">
-            <div class="overlay"></div>
-            <div id="fullscreen-hero" class="home-hero">
-                <div class="hero-container">
-                    <img class='hero-logo non-mobile' src="build/images/landing-logo.png" />
-                    <img class='hero-logo on-mobile' src="build/images/landing-logo.png" />
-                    <div class="social-icons">
-                        <div class="icon">
-                            <a href="https://www.facebook.com/shaun.cayabyab" target="_blank"><img src="build/images/icons/facebook-logo-white.png" alt="Facebook" /></a>
-                        </div>
-                        <div class="icon">
-                            <a href="https://github.com/ShaunCayabyab" target="_blank"><img src="build/images/icons/github-logo-white.png" alt="GitHub" /></a>
-                        </div>
-                        <div class="icon">
-                            <a href="https://www.linkedin.com/in/shaun-cayabyab-a757a780" target="_blank"><img src="build/images/icons/linkedin-logo-1-white.png" alt="LinkedIn" /></a>
-                        </div>
-                        <div class="icon">
-                            <a href="https://soundcloud.com/shaun-cayabyab" target="_blank"><img src="build/images/icons/soundcloud-logo-white.png" alt="SoundCloud: " /></a>
-                        </div>
-                        <div class="icon">
-                            <a href="https://twitter.com/shauncayabyab" target="_blank"><img src="build/images/icons/twitter-logo-white.png" alt="Twitter: " /></a>
-                        </div>
-                    </div>
-                    <div class="down-scroll">
-                        <img id="scroll" src="build/images/arrow-down.png" />
-                    </div>
+            <div class="reel-container">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/310674014?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
             </div>
         </section>
+
         <section id="about">
             <div class="section-container">
                 <div class="column-container">
-                    <div class='about-right'>
-                        <h2>WHO AM I?</h2>
-                        <p>
-                            <span class="highlight-purple">I'm Shaun Cayabyab, a Sound Designer and Software Engineer based out of Boston.</span> Graduating with degrees in Music and Computer Science, I aim to provide sound design and audio implementation work for video games and other media.
-                            <br><br>
-                            With my creative and technical backgrounds, I have a great interest in not only designing my own sounds, but also building efficient audio systems and solving complex implementation problems to meet the needs of the game.
-                            <br><br>
-                            On top of that, I enjoy building small sites and interactive web applications. My experience primarily consists of Laravel and Vue development in the LAMP stack. Much like my passion for sound design, I take interest in audio programming and the incorporation of audio into the web and web applications.
-                            <br><br>
-                            On my downtime, I enjoy playing drums and percussion, working towards completing bullet hell games at the highest difficulty setting, and attending anime and gaming conventions around the US Northeast area.
-                            <br><br>
-                        </p>
-                    </div>
                     <div class='about-left'>
-                        <img class='about-image' src="build/images/about-portrait.jpg" />
+                        <h2 class="title-small">WHO AM I?</h2>
+                        <div class="images-container">
+                            <img class="main-portrait" src="build/images/portrait-2017.jpg" />
+                        </div>
+                    </div>
+
+                    <div class='about-right'>
+                        <h2 class="title-full">WHO AM I?</h2>
+                        <div class="bio">
+                            <p>
+                                <span class="highlight-purple">I'm Shaun Cayabyab, a Sound Designer and Programmer based out of Boston.</span> Graduating with degrees in Music and Computer Science, I aim to provide sound design and audio implementation work for video games and other media.
+                                <br><br>
+                                With my creative and technical backgrounds, I have a great interest in not only designing my own sounds, but also building efficient audio systems and solving complex implementation problems to meet the needs of the game.
+                                <br><br>
+                                On my downtime, I enjoy playing drums and percussion, working towards completing bullet hell games at the highest difficulty setting, and attending anime and gaming conventions around the US Northeast area.
+                                <br><br>
+                            </p>
+                        </div>
+
+                        <div class="skills">
+                        </div>
+
+                        <div class="faves">
+                            <div class="row">
+                                <div class="left">
+                                    <h4>Favorite Game Franchises</h4>
+                                    <div class="list-entry">
+                                        Monster Hunter
+                                    </div>
+
+                                    <div class="list-entry">
+                                        Touhou Project
+                                    </div>
+                                </div>
+
+                                <div class="right">
+                                    <h4>Favorite Games for Sound</h4>
+                                    <div class="list-entry">
+                                        NieR: Automata
+                                    </div>
+
+                                    <div class="list-entry">
+                                        Celeste
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="center">
+                                    <h4>Favorite Anime for Sound</h4>
+                                    <div class="list-entry">
+                                        Sword Art Online: Ordinal Scale
+                                    </div>
+
+                                    <div class="list-entry">
+                                        Land of the Lustrous
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class='clear'></div>
             </div>
         </section>
-        <section id="skills">
-            <div class="section-container">
-                <div class='section-header'>
-                    <h2>WHAT TOOLS DO I USE?</h2>
-                </div>
-                <div class='tools'>
-                    <div class='tools-list-container'>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/html.png" />
-                            <p>HTML / CSS</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/javascript.png" />
-                            <p>JavaScript</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/php.png" />
-                            <p>PHP</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/mysql.png" />
-                            <p>MySQL</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/vue.png" />
-                            <p>Vue</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/laravel.png" />
-                            <p>Laravel</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/jquery.png" />
-                            <p>jQuery</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/sass.png" />
-                            <p>SASS</p>
-                        </div>
-                        <div class='tools-list-item'>
-                            <img src="build/images/dev-icons/git.png" />
-                            <p>Git</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="works">
-            <div class="section-header">
-                <h2>WHAT WORK HAVE I DONE?</h2>
-            </div>
-            <div class="employment-container">
-                <div class="employment-section -reverse">
-                    <div class="employment-left">
-                        <h3>SOFTWARE ENGINEER</h3>
-                        <p class="employment-subtitle">
-                            <i>
-                                MobileFuse
-                                <br>2017 - present
-                            </i>
-                        </p>
-                        <p class="employment-description">
-                            Working with the engineering team in the mobile ad-tech industry. Contributing to building new features and maintaining Dashboard, an internal cloud-based workflow platform, and increasing productivity across all teams. Contributions include enhancements toward data import and aggregation, database hierarchy restructuring, automatic client/partner/custom report generation, emailed report listeners, and scheduled data processing scripts.
-                            <br /><br />
-                            Developed a customizable homepage dashboard and widget system for quick displays of important campaign data, improving the workflow of internal users.
-                        </p>
-                    </div>
-                    <div class="employment-right">
-                        <div class="image-container">
-                            <img src="build/images/mobilefuse.jpg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="employment-section">
-                    <div class="employment-left">
-                        <div class="image-container">
-                            <img src="build/images/uconn-wordmark-stacked-blue-gray.jpg" />
-                        </div>
-                    </div>
-                    <div class="employment-right">
-                        <h3>STUDENT WEB DEVELOPER</h3>
-                        <p class="employment-subtitle">
-                            <i>
-                                University Communications
-                                <br>2016 - 2017
-                            </i>
-                        </p>
-                        <p class="employment-description">
-                            Assisted the UConn Communications team in the creation and maintenance of websites for the university's branding, campaigns, and public relations. I was the main developer of a WordPress plugin that interacts with the UConn Today website (today.uconn.edu). I was also a developer working on an AngularJS application for the UConn Health contact directory for the website (health.uconn.edu).
-                        </p>
-                    </div>
-                </div>
-                <div class="employment-section -reverse">
-                    <div class="employment-left">
-                        <h3>PERCUSSION GRADUATE ASSISTANT</h3>
-                        <p class="employment-subtitle">
-                            <i>
-                                University of Connecticut
-                                <br>2015 - 2017
-                            </i>
-                        </p>
-                        <p class="employment-description">
-                            Managed the percussion equipment within the UConn Music Department Percussion Studio, coordinated percussion equipment access and usage with Music Department ensembles and School of Fine Arts, and assisted in directing rehearsals with the UConn Percussion Ensemble.
-                        </p>
-                    </div>
-                    <div class="employment-right">
-                        <div class="image-container">
-                            <img src="build/images/school-of-fine-arts-wordmark-stacked-blue-gray.jpg" />
-                        </div>
-                    </div>
-                </div>
-                <div class="employment-section">
-                    <div class="employment-left">
-                        <div class="image-container">
-                            <img src="build/images/NYCEMF.jpg" />
-                        </div>
-                    </div>
-                    <div class="employment-right">
-                        <h3>FREELANCE PERCUSSIONIST AND COMPOSER</h3>
-                        <p class="employment-subtitle">
-                            <i>
-                                2012 - 2017
-                            </i>
-                        </p>
-                        <p class="employment-description">
-                            Offered musical services throughout New England and the East Coast. I have performed in festivals in NYC, Georgia, and Michigan, and have performed alongside ensembles such as So Percussion, Roomful of Teeth, and the U.S. Coast Guard Band. I have written music for concerts and several films. My music has been performed at the University of Rhode Island, University of Miami, and at the Boston night-time public arts festival ILLUMINUS.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <h3>FEATURED WORKS</h3>
-            <div class="works-container">
-                <div class="works-row">
-                    <a class="works-link" href="https://audio.shaun-cayabyab.com" target="_blank">
-                        <div class="works-item col-3 col-2-md" style="background-color: #5D5784;">
-                            <div class="image-container">
-                                <img src="build/images/works-icons/speaker.png" />
-                            </div>
-                            <div class="caption">
-                                <h3>SOUND DESIGN</h3>
-                                <p>Game Audio Reel</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="works-link" href="https://soundcloud.com/shaun-cayabyab/sets/video-game-and-film-scoring-1" target="_blank">
-                        <div class="works-item col-3 col-2-md" style="background-color: #D5C4C2;">
-                            <div class="image-container">
-                                <img src="build/images/works-icons/controller.png" />
-                            </div>
-                            <div class="caption">
-                                <h3>VIDEO GAME &amp; MEDIA SCORING</h3>
-                                <p>Scoring demo reels</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="works-link" href="https://www.youtube.com/channel/UCxCXwPqr_mpko5bWeuHeIug" target="_blank">
-                        <div class="works-item col-3 col-2-md" style="background-color: #412D4E;">
-                            <div class="image-container">
-                                <img src="build/images/works-icons/isa-logo.png" />
-                            </div>
-                            <div class="caption">
-                                <h3>ISA PROJECT</h3>
-                                <p>Percussion arrangements of video game music</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="works-link" href="https://github.com/ShaunCayabyab/LikeArchive" target="_blank">
-                        <div class="works-item col-3 col-2-md" style="background-color: #9399B8;">
-                            <div class="image-container">
-                                <img src="build/images/works-icons/likearchive.png" />
-                            </div>
-                            <div class="caption">
-                                <h3>LIKEARCHIVE</h3>
-                                <p>An archival view of a Tumblr user's liked posts</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="works-link" href="https://github.com/ShaunCayabyab/birds-of-paradise" target="_blank">
-                        <div class="works-item col-3 col-2-md" style="background-color: #5D5784;">
-                            <div class="image-container">
-                                <img src="build/images/works-icons/birds-of-paradise.png" />
-                            </div>
-                            <div class="caption">
-                                <h3>BIRDS OF PARADISE</h3>
-                                <p>Twitter data visualization application</p>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="works-link" href="https://github.com/ShaunCayabyab/k-means.py" target="_blank">
-                        <div class="works-item col-3 col-2-md" style="background-color: #D5C4C2;">
-                            <div class="image-container">
-                                <img src="build/images/works-icons/k-means.png" />
-                            </div>
-                            <div class="caption">
-                                <h3>K-MEANS.PY</h3>
-                                <p>Image segmentation script</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section id="contact">
+
+        <section id="sound-design">
             <div class="section-container">
                 <div class="section-header">
-                    <h2>HOW CAN I BE CONTACTED?</h2>
+                    <h2>WHAT SOUND DESIGN WORK HAVE I DONE?</h2>
                 </div>
-                <p>I can be found through these social media sites:</p>
-                <div class="social-icons">
-                    <div class="icon">
-                        <a href="https://www.facebook.com/shaun.cayabyab" target="_blank"><img src="build/images/icons/facebook-logo.jpg" alt="Facebook" /></a>
+
+                <div class="works-list-container">
+                    <div class="work-item reverse">
+                        <div class="work-left">
+                            <h2>3D GAME KIT</h2>
+                            <p class="subtitle">
+                                <i>
+                                    (Unity &amp; FMOD)
+                                    <br>
+                                    Sound Redesign &amp; Implementation
+                                </i>
+                            </p>
+                            <p class="description">
+                                The 3D Game Kit is a free project for the Unity game engine - it features many pre-made models, animations, prefabs, and scripts, all to help a user make a game with minimal coding required. Taking great interest in the project and in technical audio implementation, I wanted to replace the project's sounds with my own and implement them using FMOD.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/312615050?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <a href="https://github.com/ShaunCayabyab" target="_blank"><img src="build/images/icons/github-logo.jpg" alt="GitHub" /></a>
+
+                    <div class="work-item">
+                        <div class="work-left">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/311585537?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="work-right">
+                            <h2>#NOISEVEMBER</h2>
+
+                            <p class="description">
+                                Every November, there is the hashtag trend &#8212; #noisevember &#8212; that brings in a bunch of sound design and game audio people. Each day for the entire month, people share snippets of anything sound related, whether it's a random sound they've designed or something a part of a project they're working on. I wanted to take part and try to come up with as many cool sounds as I could with some random objects around my room.
+                            </p>
+                        </div>
                     </div>
-                    <div class="icon">
-                        <a href="https://www.linkedin.com/in/shaun-cayabyab-a757a780" target="_blank"><img src="build/images/icons/linkedin-logo-1.jpg" alt="LinkedIn" /></a>
-                    </div>
-                    <div class="icon">
-                        <a href="https://soundcloud.com/shaun-cayabyab" target="_blank"><img src="build/images/icons/soundcloud-logo.jpg" alt="SoundCloud: " /></a>
-                    </div>
-                    <div class="icon">
-                        <a href="https://twitter.com/shauncayabyab" target="_blank"><img src="build/images/icons/twitter-logo.jpg" alt="Twitter: " /></a>
+
+                    <div class="work-item reverse last">
+                        <div class="work-left">
+                            <h2>BITS &amp; PIECES</h2>
+
+                            <p class="description">
+                                I like to keep my Twitter account pretty active. Every now and then I post #gameaudio and #sounddesign related snippets of work to share with others.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Been doing a lot of <a href="https://twitter.com/hashtag/gameaudio?src=hash&amp;ref_src=twsrc%5Etfw">#gameaudio</a> Unity/FMOD learnin&#39; the past few weeks - both awesome to work with! Wanted to experiment in ways to get more gradual control over my mixer snapshots. <a href="https://t.co/SCpSqwlohp">pic.twitter.com/SCpSqwlohp</a></p>&mdash; Shaun Cayabyab 🔜 GGJ19 (@shauncayabyab) <a href="https://twitter.com/shauncayabyab/status/1082791063176261632?ref_src=twsrc%5Etfw">January 9, 2019</a></blockquote>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                        </div>
                     </div>
                 </div>
-                <p>Or send an email to:</p>
-                <h3>contact@shaun-cayabyab.com</h3>
-                <br><br>
-                <img class="goofy-img" src="build/images/goofy-pic.png" />
-                <p>Looking forward to working with you!</p>
-                <br><br>
-                <h2>- <a class="resume-link" href="ShaunCayabyab-Resume.pdf" target="_blank">RESUME</a> -</h2>
+            </div>
+        </section>
+
+        <section id="programming">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>WHAT PROGRAMMING HAVE I DONE?</h2>
+                    <p>Much of my programming experience has been towards web design and development, but I've also been expanding it towards audio programming. Outside of game audio, my programming interests also branch out to UI/UX development and web audio.</p>
+                </div>
+
+                <div class="works-list-container">
+                    <div class="work-item reverse">
+                        <div class="work-left">
+                            <h2><a class="title-link" href="https://github.com/ShaunCayabyab/birds-of-paradise" target="_blank">BIRDS OF PARADISE</a></h2>
+                            <p class="subtitle">
+                                <i>Twitter Data Visualization Application</i>
+                            </p>
+                            <p class="description">
+                                This was a simple project for me to get to know Node.js, D3.js, and websockets. This web application makes use of Twitter's streaming API to grab a live feed of Tweets that contain the word "bird". From there, the tweet is displayed on the page and plays a random bird call.
+                                <br><br>
+                                Listen to a rather pretty soundscape of birds and a gentle river generated by bird Tweets!
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <div class="image-container">
+                                <a href="https://github.com/ShaunCayabyab/birds-of-paradise" target="_blank"><img src="build/images/for-smushit/works-icons/birds-of-paradise-regular.png" /></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-item tiled">
+                        <div class="work-left">
+                            <div class="image-container">
+                                <a href="https://github.com/ShaunCayabyab/LikeArchive" target="_blank"><img src="build/images/for-smushit/works-icons/likearchive-regular.png" /></a>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <h2><a class="title-link" href="https://github.com/ShaunCayabyab/LikeArchive" target="_blank">LIKE ARCHIVE</a></h2>
+                            <p class="subtitle">
+                                <i>An Archival View of a Tumblr User's Liked Posts</i>
+                            </p>
+
+                            <p class="description">
+                                This is a single page application that uses the Tumblr API and PHP client to create an archival view of a Tumblr user's liked posts. Properly viewing your liked posts or another user's publicly shared liked posts has always been a problem of mine during my times of using Tumblr, and I wanted to remedy that with this application.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="music">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>WHAT MUSIC WORK HAVE I DONE?</h2>
+                    <p>Though my current main line of work is with audio and programming, I also have experience as a Percussionist and Composer.</p>
+                </div>
+
+                <div class="works-list-container">
+                    <div class="work-item reverse">
+                        <div class="work-left">
+                            <h2>ISA</h2>
+                            <p class="subtitle">
+                                <i>Percussion Arrangements of Video Game Music</i>
+                            </p>
+                            <p class="description">
+                                ISA was a small project of mine where I wanted to take some of my favorite tracks from my favorite video games, arrange them for percussion, and record myself playing each part. It was a great experience that helped me learn percussion mic-ing techniques, audio recording, and video editing.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <div class="video-responsive">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/lildNeEC8Vk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="work-item">
+                        <div class="work-left">
+                            <div class="video-responsive">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/Du5IPDvrLGc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <h2>EKUDRUMS</h2>
+                            <p class="subtitle">
+                                <i>Drum Covers of Anime Music</i>
+                            </p>
+                            <p class="description">
+                                Like with my enjoyment of redesigning game audio, I also enjoy covering anime music. Here's another project with a silly name, involving me playing drum covers of some of my favorite songs that I've heard while watching anime.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="work-item reverse last">
+                        <div class="work-left">
+                            <h2>GOLIATH INDUSTRIAL</h2>
+                            <p class="subtitle">
+                                <i>Piece Written for ILLUMINUS 2015</i>
+                            </p>
+
+                            <p class="description">
+                                On October 10th, I had the opportunity to be a part of the Waking the Monster team for Boston's ILLUMINUS, a nighttime public arts festival down Landsdowne Street. The festival featured many public art works by Boston's artists and performers. I, and three other composers, wrote music for nine percussionists to drum on the beams and pipes of the Green Monster. The team aimed to bring the green giant to life through programmatic music, lighting, and staging throughout the structure. Roughly thousands of spectators packed Landsdowne Street, and clustered together around the Green Monster to watch our performance.
+                            </p>
+                        </div>
+                        <div class="work-right">
+                            <div class="image-container">
+                                <img class="full" src="build/images/for-smushit/works-icons/waking-the-monster.jpg" />
+                                <iframe width="90%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/232549366&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-container">
+                <div class="column-container">
+                    <div class="about-right">
+                        <div class="section-header">
+                            <h2>HOW CAN I BE CONTACTED?</h2>
+                        </div>
+                        <p>I can be found through these sites:</p>
+                        <div class="social-icons">
+                            <div class="icon">
+                                <a href="https://github.com/ShaunCayabyab" target="_blank"><img src="build/images/icons/github-logo.jpg" alt="GitHub" /></a>
+                            </div>
+                            <div class="icon">
+                                <a href="https://www.linkedin.com/in/shaun-cayabyab-a757a780" target="_blank"><img src="build/images/icons/linkedin-logo-1.jpg" alt="LinkedIn" /></a>
+                            </div>
+                            <div class="icon">
+                                <a href="https://twitter.com/shauncayabyab" target="_blank"><img src="build/images/icons/twitter-logo.jpg" alt="Twitter" /></a>
+                            </div>
+                            <div class="icon">
+                                <a href="https://vimeo.com/user93763173" target="_blank"><img src="build/images/icons/vimeo-logo.png" alt="Vimeo" /></a>
+                            </div>
+                        </div>
+                        <p>Or send an email to:</p>
+                        <h3>contact@shaun-cayabyab.com</h3>
+                        <br><br>
+                        <p>Looking forward to working with you!</p>
+                        <h2>- <a class="resume-link" href="ShaunCayabyab-Resume.pdf" target="_blank">PROGRAMMING RESUME</a> -</h2>
+                    </div>
+
+                    <div class="about-left">
+                        <img class='about-image' src="build/images/about-portrait.jpg" />
+                    </div>
+
+                    <div class='clear'></div>
+                </div>
             </div>
         </section>
         <footer>
             <p>Handmade with love by Shaun Cayabyab</p>
         </footer>
     </body>
+    <script>
+        function openTab(evt, cityName) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tab-content");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tab-links");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the link that opened the tab
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        } 
+    </script>
 </html>

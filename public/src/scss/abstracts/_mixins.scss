@@ -1,0 +1,106 @@
+/*
+  For singular breakpoint handling
+
+  @param int    $breakpoint
+  @param string $type
+ */
+@mixin respond-to($breakpoint, $type) {
+    @media only screen and (#{$type}: $breakpoint) {
+        @content;
+    }
+}
+
+/*
+  For handling both sides of a breakpoint
+
+  @param int    $breakpoint
+  @param string $dimension
+  @param map    $rules
+ */
+@mixin breakpoint($breakpoint, $dimension, $rules) {
+    @media only screen and (min-#{$dimension}: $breakpoint) {
+        @each $attribute, $setting in map-get($rules, min) {
+            #{$attribute}: $setting;
+        }
+    }
+    @media only screen and (max-#{$dimension}: ($breakpoint - 1)) {
+        @each $attribute, $setting in map-get($rules, max) {
+            #{$attribute}: $setting;
+        }
+    }
+}
+
+/*
+  Setting rules based on orientation
+
+  @param map $rules
+ */
+@mixin orientation($rules) {
+    @media screen and (orientation: portrait) {
+        @each $attribute, $setting in map-get($rules, portrait) {
+            #{$attribute}: $setting;
+        }
+    }
+    @media screen and (orientation: landscape) and (max-width: $breakpoint-med) {
+        @each $attribute, $setting in map-get($rules, landscape) {
+            #{$attribute}: $setting;
+        }
+    }
+}
+
+@mixin container-centered {
+    @include breakpoint($breakpoint-med, 'width', (
+        min: (
+            width: 100%,
+            max-width: (1920px * 0.7)
+        ),
+        max: (
+            width: 100%,
+        )
+    ))
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin force-full {
+    width: 100%;
+    min-height: 100vh;
+}
+
+@mixin full-contain {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+@mixin full-width {
+    width: 100%;
+}
+
+@mixin flex-container($is_reversed) {
+    @if $is_reversed {
+        @include breakpoint($breakpoint-small, 'width', (
+            min: (
+                width: 100%,
+                display: flex,
+                flex-direction: row-reverse,
+                align-items: stretch
+            ),
+            max: (
+                width: 100%,
+            )
+        ));
+    } @else {
+        @include breakpoint($breakpoint-small, 'width', (
+            min: (
+                width: 100%,
+                display: flex,
+                flex-direction: row,
+                align-items: stretch
+            ),
+            max: (
+                width: 100%,
+            )
+        ));
+    }
+}

@@ -1,0 +1,21 @@
+#programming {
+	background-color: $deep-purple;
+
+    .section-container {
+        @include container-centered;
+
+        .section-header {
+            width: 100%;
+            padding-top: 30px;
+            text-align: center;
+
+            h2, p {
+                color: white;
+            }
+        }
+
+        .work-item {
+            border-bottom: 1px solid $purple;
+        }
+    }
+}

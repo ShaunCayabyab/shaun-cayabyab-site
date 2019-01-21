@@ -9,7 +9,7 @@
   "author": "Shaun Cayabyab",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.23.7",
+    "browser-sync": "^2.26.3",
     "css-mqpacker": "^6.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
@@ -21,7 +21,7 @@
     "gulp-sass": "^3.2.1",
     "gulp-smushit": "^1.2.0",
     "gulp-util": "^3.0.8",
-    "jshint": "^2.9.5",
+    "jshint": "^2.9.7",
     "minimist": "^1.2.0",
     "postcss-assets": "^4.2.0",
     "vinyl-ftp": "^0.6.1"

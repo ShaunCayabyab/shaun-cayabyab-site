@@ -1,77 +1,77 @@
-$hero-bg: url(../images/landing-photo.jpg);
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto+Condensed');
 @import 'grid';
 
-@mixin full-contain{
-	min-width: 100%;
-	min-height: 100%;
-}
+@import 'abstracts/breakpoints';
+@import 'abstracts/mixins';
 
-@mixin force-full{
-	width: 100%;
-	min-height: 100vh;
-}
+@import 'base/palette';
+@import 'base/typography';
 
-@mixin above-overlay{
-	position: relative;
-	z-index: 99;
-}
+@import 'components/header';
+@import 'components/titles';
+@import 'components/content-menu';
+@import 'components/works-list';
+
+@import 'sections/about';
+@import 'sections/sound-design';
+@import 'sections/programming';
+@import 'sections/music';
+@import 'sections/contact';
+
+@import 'base/landing';
 
 html,
 body,
 section,
 ul,
 ol{
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-html{
-	font-size: 1.1rem;
-	font-family: 'Roboto Condensed', sans-serif;
-    color: #696969;
+.main-header {
+    @include full-width;
+    background-color: $deep-purple;
+    text-align: center;
+    padding: 1rem 0;
+
+    .brand-image {
+        width: 96%;
+        max-width: 550px;
+        padding: 10px 0;
+    }
 }
 
-h1, h2, h3, h4{
-	font-size: 1.2em;
-	color: #696969;
-	text-align: center;
-	font-family: 'Montserrat', sans-serif;
+#landing {
+    background-color: $grey;
+
+    .reel-container {
+        width: 100%;
+        max-width: 1000px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 70px 0;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
-h2{
-	font-size: 2em;
+footer{
+    width: 100%;
+    padding: 5px 0 5px 0;
+    background-color: $deep-purple;
+    text-align: center;
+    color: white;
+
+    p{
+        margin: 0;
+        font-size: 0.6em;
+    }
 }
-
-h4{
-	margin: 0;
-}
-
-section{
-	position: relative;
-	width: 100%;
-}
-
-.highlight-purple {
-    font-weight: bolder;
-    color : #656898;
-}
-
-$gutter: 4%;
-$breakpoint-small: 600px; // 540px
-$breakpoint-med: 800px; // 720px
-$breakpoint-large: 60em; // 960px
-
-@media only screen and (min-width: $breakpoint-med) {
-	@import 'base/_full';
-}
-
-@media only screen and (min-width: ($breakpoint-small)) and (max-width: ($breakpoint-med - 1)){
-	@import 'base/_mid';
-}
-
-@media only screen and (max-width: ($breakpoint-small - 1)){
-	@import 'base/_small';
-}
-
